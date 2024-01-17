@@ -1,0 +1,1024 @@
+{
+  "companyId": "c07b4540-8fee-485a-af76-21e3956853a7",
+  "authTokenExpireIds": [],
+  "connectorIds": [
+    "pingOneMfaConnector",
+    "httpConnector",
+    "errorConnector",
+    "analyticsConnector",
+    "functionsConnector"
+  ],
+  "createdDate": 1704746719637,
+  "currentVersion": 6,
+  "customerId": "35f33bbaf301dfa496ccb7eee32d9c0e",
+  "deployedDate": 1704746722054,
+  "description": "Imported on Mon Jan 08 2024 19:33:25 GMT+0000 (Coordinated Universal Time)",
+  "flowStatus": "enabled",
+  "inputSchemaCompiled": {
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "p1UserId": {
+          "description": "PingOne UserID",
+          "preferredDataType": "string",
+          "isExpanded": true,
+          "type": "string",
+          "name": "p1UserId"
+        },
+        "fidoRelyingParty": {
+          "description": "FIDO Relying Party",
+          "preferredDataType": "string",
+          "isExpanded": true,
+          "type": "string",
+          "name": "fidoRelyingParty"
+        }
+      },
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  "isInputSchemaSaved": true,
+  "isOutputSchemaSaved": false,
+  "name": "[Sub] Passkey - Enrollment",
+  "publishedVersion": 6,
+  "settings": {
+    "csp": "worker-src 'self' blob:; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://devsdk.singularkey.com http://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';",
+    "intermediateLoadingScreenCSS": "",
+    "intermediateLoadingScreenHTML": "",
+    "logLevel": 3,
+    "debugMode": true,
+    "useBetaAlgorithm": true
+  },
+  "timeouts": "null",
+  "updatedDate": 1704746722055,
+  "flowId": "1a050a2ea204ff7179104113ce22d983",
+  "versionId": 6,
+  "graphData": {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "m7yd491yau",
+            "nodeType": "CONNECTION",
+            "connectionId": "b72bd44e6be8180bd5988ac74cd9c949",
+            "connectorId": "pingOneMfaConnector",
+            "name": "PingOne MFA",
+            "label": "PingOne MFA",
+            "status": "configured",
+            "capabilityName": "createDevice",
+            "type": "action",
+            "properties": {
+              "authTemplateName": {
+                "value": "STRONG_AUTHENTICATION"
+              },
+              "deviceType": {
+                "value": "FIDO2"
+              },
+              "status": {
+                "value": "ACTIVATION_REQUIRED"
+              },
+              "rpName": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"DaVinci - Generic\"\n      }\n    ]\n  }\n]"
+              },
+              "userId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"p1UserId\",\n        \"data\": \"{{global.parameters.p1UserId}}\",\n        \"tooltip\": \"{{global.parameters.p1UserId}}\",\n        \"children\": [\n          {\n            \"text\": \"p1UserId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "customNotificationPolicyId": {
+                "value": "{}"
+              },
+              "customTemplateVariant": {
+                "value": "{}"
+              },
+              "notificationPolicyId": {
+                "value": "a10b4d1b-e886-4283-a45a-2ebc1cfd3b71"
+              },
+              "customDeviceType": {
+                "value": "{}"
+              }
+            }
+          },
+          "position": {
+            "x": 277,
+            "y": 600.823691676577
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "tu8vi5uh8t",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "properties": {
+              "cma9m9d9up": {
+                "value": "allTriggersFalse"
+              },
+              "n0ybi1qd6b": {
+                "value": "allTriggersTrue"
+              },
+              "ieagoz499k": {
+                "value": "allTriggersTrue"
+              },
+              "iefl2qlw3w": {
+                "value": "allTriggersFalse"
+              },
+              "5hly68571j": {
+                "value": "allTriggersFalse"
+              }
+            }
+          },
+          "position": {
+            "x": 397,
+            "y": 600.823691676577
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "yxpid7yt0j",
+            "nodeType": "CONNECTION",
+            "connectionId": "b72bd44e6be8180bd5988ac74cd9c949",
+            "connectorId": "pingOneMfaConnector",
+            "name": "PingOne MFA",
+            "label": "PingOne MFA",
+            "status": "configured",
+            "capabilityName": "activateDevice",
+            "type": "action",
+            "properties": {
+              "deviceId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"id\",\n        \"data\": \"{{local.m7yd491yau.payload.output.rawResponse.id}}\",\n        \"tooltip\": \"{{local.m7yd491yau.payload.output.rawResponse.id}}\",\n        \"children\": [\n          {\n            \"text\": \"id\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "attestation": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"http.svg\",\n        \"url\": \"attestationValue\",\n        \"data\": \"{{local.7pasd1m9dp.payload.output.attestationValue}}\",\n        \"tooltip\": \"{{local.7pasd1m9dp.payload.output.attestationValue}}\",\n        \"children\": [\n          {\n            \"text\": \"attestationValue\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "userId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"p1UserId\",\n        \"data\": \"{{global.parameters.p1UserId}}\",\n        \"tooltip\": \"{{global.parameters.p1UserId}}\",\n        \"children\": [\n          {\n            \"text\": \"p1UserId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "origin": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"https://\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"fidoRelyingParty\",\n        \"data\": \"{{global.parameters.fidoRelyingParty}}\",\n        \"tooltip\": \"{{global.parameters.fidoRelyingParty}}\",\n        \"children\": [\n          {\n            \"text\": \"fidoRelyingParty\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1085.644624851344,
+            "y": 597.8584016408996
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "qdidldvruy",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "properties": {
+              "tpcyp0qsbk": {
+                "value": "allTriggersFalse"
+              },
+              "zhzivadczx": {
+                "value": "allTriggersFalse"
+              },
+              "wleeb8lx5m": {
+                "value": "allTriggersFalse"
+              }
+            }
+          },
+          "position": {
+            "x": 1224.820933174767,
+            "y": 597.8584016408996
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "olyh2c4xjv",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "createSuccessResponse",
+            "type": "action",
+            "properties": {
+              "nodeTitle": {
+                "value": "Passkey Enrolled"
+              },
+              "backgroundColor": {
+                "value": "#7ed321ff"
+              },
+              "claimsNameValuePairs": {
+                "value": []
+              },
+              "returnRequestParameters": {
+                "value": false
+              }
+            }
+          },
+          "position": {
+            "x": 1447.5030264922439,
+            "y": 486.51735498216124
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "tpcyp0qsbk",
+            "nodeType": "CONNECTION",
+            "connectionId": "53ab83a4a4ab919d9f2cb02d9e111ac8",
+            "connectorId": "errorConnector",
+            "name": "Error Message",
+            "label": "Error Customize",
+            "status": "configured",
+            "idUnique": "0ihg3qqguz",
+            "capabilityName": "customErrorMessage",
+            "type": "action",
+            "properties": {
+              "errorMessage": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"message\",\n        \"data\": \"{{local.yxpid7yt0j.payload.error.message}}\",\n        \"tooltip\": \"{{local.yxpid7yt0j.payload.error.message}}\",\n        \"children\": [\n          {\n            \"text\": \"message\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1447.5030264922439,
+            "y": 737.0347099643226
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zhzivadczx",
+            "nodeType": "CONNECTION",
+            "connectionId": "b72bd44e6be8180bd5988ac74cd9c949",
+            "connectorId": "pingOneMfaConnector",
+            "name": "PingOne MFA",
+            "label": "PingOne MFA",
+            "status": "configured",
+            "capabilityName": "deleteDevice",
+            "type": "action",
+            "properties": {
+              "userId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"p1UserId\",\n        \"data\": \"{{global.parameters.p1UserId}}\",\n        \"tooltip\": \"{{global.parameters.p1UserId}}\",\n        \"children\": [\n          {\n            \"text\": \"p1UserId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "deviceId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"id\",\n        \"data\": \"{{local.m7yd491yau.payload.output.rawResponse.id}}\",\n        \"tooltip\": \"{{local.m7yd491yau.payload.output.rawResponse.id}}\",\n        \"children\": [\n          {\n            \"text\": \"id\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1085.644624851344,
+            "y": 458.68209331747664
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "85tdzne8xj",
+            "nodeType": "CONNECTION",
+            "connectionId": "a6660274691a60993891f1db6cd7ce7f",
+            "connectorId": "analyticsConnector",
+            "name": "Flow Analytics",
+            "label": "Flow Analytics",
+            "status": "configured",
+            "capabilityName": "logOutcome",
+            "type": "action",
+            "properties": {
+              "outcomeType": {
+                "value": "enrollment"
+              },
+              "outcomeStatus": {
+                "value": "success"
+              },
+              "shouldContinueOnError": {
+                "value": true
+              },
+              "backgroundColor": {
+                "value": "#50e3c2ff"
+              },
+              "nodeTitle": {
+                "value": "Device enrolled"
+              }
+            }
+          },
+          "position": {
+            "x": 1447.5030264922439,
+            "y": 597.8584016408996
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "wleeb8lx5m",
+            "nodeType": "CONNECTION",
+            "connectionId": "a6660274691a60993891f1db6cd7ce7f",
+            "connectorId": "analyticsConnector",
+            "name": "Flow Analytics",
+            "label": "Flow Analytics",
+            "status": "configured",
+            "capabilityName": "logOutcome",
+            "type": "action",
+            "properties": {
+              "outcomeType": {
+                "value": "enrollment"
+              },
+              "outcomeStatus": {
+                "value": "error"
+              },
+              "shouldContinueOnError": {
+                "value": true
+              },
+              "nodeTitle": {
+                "value": "Enrollment failed"
+              },
+              "backgroundColor": {
+                "value": "#50e3c2ff"
+              }
+            }
+          },
+          "position": {
+            "x": 1447.5030264922439,
+            "y": 876.2110182877454
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "216ifhity8",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1196.9856715100823,
+            "y": 458.68209331747664
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0ljrzqo06a",
+            "nodeType": "CONNECTION",
+            "connectionId": "a6660274691a60993891f1db6cd7ce7f",
+            "connectorId": "analyticsConnector",
+            "name": "Flow Analytics",
+            "label": "Flow Analytics",
+            "status": "configured",
+            "capabilityName": "logOutcome",
+            "type": "action",
+            "properties": {
+              "outcomeType": {
+                "value": "enrollment"
+              },
+              "outcomeStatus": {
+                "value": "cancelled"
+              },
+              "shouldContinueOnError": {
+                "value": true
+              },
+              "nodeTitle": {
+                "value": "Enrollment cancelled"
+              },
+              "backgroundColor": {
+                "value": "#50e3c2ff"
+              }
+            },
+            "idUnique": "1r4ybzxogu"
+          },
+          "position": {
+            "x": 1447.5030264922439,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "y38ela9x83",
+            "nodeType": "CONNECTION",
+            "connectionId": "de650ca45593b82c49064ead10b9fe17",
+            "connectorId": "functionsConnector",
+            "name": "Functions",
+            "label": "Functions",
+            "status": "configured",
+            "capabilityName": "AEqualsB",
+            "type": "trigger",
+            "properties": {
+              "leftValueA": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"http.svg\",\n        \"url\": \"buttonValue\",\n        \"data\": \"{{local.7pasd1m9dp.payload.output.buttonValue}}\",\n        \"tooltip\": \"{{local.7pasd1m9dp.payload.output.buttonValue}}\",\n        \"children\": [\n          {\n            \"text\": \"buttonValue\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "rightValueB": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"submit\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Browser respond with success?"
+              }
+            }
+          },
+          "position": {
+            "x": 805,
+            "y": 606.823691676577
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "cdfh8z0ccc",
+            "nodeType": "EVAL",
+            "properties": {
+              "zhzivadczx": {
+                "value": "allTriggersFalse"
+              }
+            }
+          },
+          "position": {
+            "x": 925,
+            "y": 606.823691676577
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "7pasd1m9dp",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHTMLTemplate",
+            "type": "trigger",
+            "properties": {
+              "undefined": {
+                "value": {}
+              },
+              "inputSchema": {
+                "value": "{\n\"type\": \"object\",\n   \"properties\": {\n      \"publicKeyCredentialCreationOptions\": {\n        \"displayName\": \"credentials\",\n\t\t\t\"preferedControlType\": \"textField\",\n            \"enableParameters\": true\n      }\n   }\n}"
+              },
+              "customHTML": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"<div class=\\\"col-4 align-self-center mx-auto mt-5 d-none\\\">\\n   <div class=\\\"card\\\">\\n      <div class=\\\"card-body\\\">\\n         <div class=\\\"container-fluid\\\">\\n            <h5>  \\n               <svg role=\\\"presentation\\\" viewBox=\\\"0 0 24 24\\\" style=\\\"width: 32px; height: 32px;\\\">\\n                  <path d=\\\"M17.81,4.47C17.73,4.47 17.65,4.45 17.58,4.41C15.66,3.42 14,3 12,3C10.03,3 8.15,3.47 6.44,4.41C6.2,4.54 5.9,4.45 5.76,4.21C5.63,3.97 5.72,3.66 5.96,3.53C7.82,2.5 9.86,2 12,2C14.14,2 16,2.47 18.04,3.5C18.29,3.65 18.38,3.95 18.25,4.19C18.16,4.37 18,4.47 17.81,4.47M3.5,9.72C3.4,9.72 3.3,9.69 3.21,9.63C3,9.47 2.93,9.16 3.09,8.93C4.08,7.53 5.34,6.43 6.84,5.66C10,4.04 14,4.03 17.15,5.65C18.65,6.42 19.91,7.5 20.9,8.9C21.06,9.12 21,9.44 20.78,9.6C20.55,9.76 20.24,9.71 20.08,9.5C19.18,8.22 18.04,7.23 16.69,6.54C13.82,5.07 10.15,5.07 7.29,6.55C5.93,7.25 4.79,8.25 3.89,9.5C3.81,9.65 3.66,9.72 3.5,9.72M9.75,21.79C9.62,21.79 9.5,21.74 9.4,21.64C8.53,20.77 8.06,20.21 7.39,19C6.7,17.77 6.34,16.27 6.34,14.66C6.34,11.69 8.88,9.27 12,9.27C15.12,9.27 17.66,11.69 17.66,14.66A0.5,0.5 0 0,1 17.16,15.16A0.5,0.5 0 0,1 16.66,14.66C16.66,12.24 14.57,10.27 12,10.27C9.43,10.27 7.34,12.24 7.34,14.66C7.34,16.1 7.66,17.43 8.27,18.5C8.91,19.66 9.35,20.15 10.12,20.93C10.31,21.13 10.31,21.44 10.12,21.64C10,21.74 9.88,21.79 9.75,21.79M16.92,19.94C15.73,19.94 14.68,19.64 13.82,19.05C12.33,18.04 11.44,16.4 11.44,14.66A0.5,0.5 0 0,1 11.94,14.16A0.5,0.5 0 0,1 12.44,14.66C12.44,16.07 13.16,17.4 14.38,18.22C15.09,18.7 15.92,18.93 16.92,18.93C17.16,18.93 17.56,18.9 17.96,18.83C18.23,18.78 18.5,18.96 18.54,19.24C18.59,19.5 18.41,19.77 18.13,19.82C17.56,19.93 17.06,19.94 16.92,19.94M14.91,22C14.87,22 14.82,22 14.78,22C13.19,21.54 12.15,20.95 11.06,19.88C9.66,18.5 8.89,16.64 8.89,14.66C8.89,13.04 10.27,11.72 11.97,11.72C13.67,11.72 15.05,13.04 15.05,14.66C15.05,15.73 16,16.6 17.13,16.6C18.28,16.6 19.21,15.73 19.21,14.66C19.21,10.89 15.96,7.83 11.96,7.83C9.12,7.83 6.5,9.41 5.35,11.86C4.96,12.67 4.76,13.62 4.76,14.66C4.76,15.44 4.83,16.67 5.43,18.27C5.53,18.53 5.4,18.82 5.14,18.91C4.88,19 4.59,18.87 4.5,18.62C4,17.31 3.77,16 3.77,14.66C3.77,13.46 4,12.37 4.45,11.42C5.78,8.63 8.73,6.82 11.96,6.82C16.5,6.82 20.21,10.33 20.21,14.65C20.21,16.27 18.83,17.59 17.13,17.59C15.43,17.59 14.05,16.27 14.05,14.65C14.05,13.58 13.12,12.71 11.97,12.71C10.82,12.71 9.89,13.58 9.89,14.65C9.89,16.36 10.55,17.96 11.76,19.16C12.71,20.1 13.62,20.62 15.03,21C15.3,21.08 15.45,21.36 15.38,21.62C15.33,21.85 15.12,22 14.91,22Z\\\" style=\\\"fill: rgb(61, 69, 77);\\\"></path>\\n               </svg>\\n               <span class=\\\"ml-3\\\">Passkey</span>\\n            </h5>\\n            <p>\\n               Your device is compatible with Passkey authentication.\\n            </p>\\n            <p>\\n               Follow the instructions in your browser to enroll.\\n            </p>\\n         </div> \\n         <div class=\\\"form\\\">\\n            <div data-skcomponent=\\\"skerror\\\" class=\\\"sk-alert sk-alert-danger text-danger\\\" data-skvisibility=\\\"\\\" ></div>\\n            <form id=\\\"FIDO2Form\\\" method=\\\"post\\\">\\n               <input type=\\\"hidden\\\" name=\\\"attestationValue\\\" id=\\\"attestationValue\\\" />\\n               <button data-skcomponent=\\\"skbutton\\\" data-skbuttontype=\\\"form-submit\\\" class=\\\"d-none\\\"  data-skbuttonvalue=\\\"submit\\\" data-skform=\\\"FIDO2Form\\\" id=\\\"attestationButton\\\">Next</button>\\n            </form>\\n            <form id=\\\"errorForm\\\" method=\\\"post\\\">\\n               <button data-skcomponent=\\\"skbutton\\\" data-skbuttontype=\\\"form-submit\\\" class=\\\"d-none\\\"  data-skbuttonvalue=\\\"InvalidStateError\\\" data-skform=\\\"errorForm\\\" id=\\\"errorButton\\\">Next</button>\\n            </form>\\n         </div>\\n         </div>\\n      </div>\\n   </div>\\n</div>\"\n      }\n    ]\n  }\n]"
+              },
+              "formFieldsList": {
+                "value": [
+                  {
+                    "preferredControlType": "textField",
+                    "preferredDataType": "string",
+                    "propertyName": "buttonValue"
+                  },
+                  {
+                    "preferredControlType": "textField",
+                    "preferredDataType": "string",
+                    "propertyName": "attestationValue",
+                    "displayName": "attestationValue"
+                  }
+                ]
+              },
+              "nodeDescription": {},
+              "nodeTitle": {
+                "value": "Enroll Passkey"
+              },
+              "customScript": {
+                "value": "var authAbortController = window.PublicKeyCredential ? new AbortController() : null;\nvar authAbortSignal = window.PublicKeyCredential ? authAbortController.signal : null;\n\nfunction webAuthnRegistration(publicKeyCredentialCreationOptions) {\n  return new Promise(function(resolve, reject) {\n        resolve(register(publicKeyCredentialCreationOptions));\n    });\n}\n\nfunction register(publicKeyCredentialCreationOptions) {\n    return new Promise(function(resolve, reject) {\n        var options = JSON.parse(publicKeyCredentialCreationOptions);\n        var publicKeyCredential = {};\n        publicKeyCredential.rp = options.rp;\n        publicKeyCredential.user = options.user;\n        publicKeyCredential.user.id = new Uint8Array(options.user.id);\n        publicKeyCredential.challenge = new Uint8Array(options.challenge);\n        publicKeyCredential.pubKeyCredParams = options.pubKeyCredParams;\n        // Optional parameters\n        if ('timeout' in options) {\n            publicKeyCredential.timeout = options.timeout;\n        }\n        if ('excludeCredentials' in options) {\n            publicKeyCredential.excludeCredentials = credentialListConversion(options.excludeCredentials);\n        }\n        if ('authenticatorSelection' in options) {\n            publicKeyCredential.authenticatorSelection = options.authenticatorSelection;\n        }\n        if ('attestation' in options) {\n            publicKeyCredential.attestation = options.attestation;\n        }\n        if ('extensions' in options) {\n            publicKeyCredential.extensions = options.extensions;\n        }\n        console.log(publicKeyCredential);\n        navigator.credentials.create({\"publicKey\": publicKeyCredential, \"signal\": authAbortSignal})\n            .then(function (newCredentialInfo) {\n                // Send new credential info to server for verification and registration.\n                console.log(newCredentialInfo);\n                var publicKeyCredential = {};\n                if ('id' in newCredentialInfo) {\n                    publicKeyCredential.id = newCredentialInfo.id;\n                }\n                if ('type' in newCredentialInfo) {\n                    publicKeyCredential.type = newCredentialInfo.type;\n                }\n                if ('rawId' in newCredentialInfo) {\n                    publicKeyCredential.rawId = toBase64Str(newCredentialInfo.rawId);\n                }\n                if (!newCredentialInfo.response) {\n                    throw \"Missing 'response' attribute in credential response\";\n                }\n                var response = {};\n                response.clientDataJSON = toBase64Str(newCredentialInfo.response.clientDataJSON);\n                response.attestationObject = toBase64Str(newCredentialInfo.response.attestationObject);\n                publicKeyCredential.response = response;\n                resolve(JSON.stringify(publicKeyCredential));\n                document.getElementById(\"attestationValue\").value = JSON.stringify(publicKeyCredential);\n                document.getElementById(\"attestationButton\").click();\n            }).catch(function (err) {\n                 if (err.name===\"InvalidStateError\") { \n                    document.getElementById(\"errorButton\").click();\n                } else {\n                // No acceptable authenticator or user refused consent. Handle appropriately.\n                console.log(err);\n                reject(Error(err.name));\n                }\n        });\n    });\n}\n\nfunction credentialListConversion(list) {\n    var credList = [];\n    for (var i=0; i < list.length; i++) {\n        var cred = {\n            type: list[i].type,\n            id: new Uint8Array(list[i].id)\n        };\n        if (list[i].transports) {\n            cred.transports = list[i].transports;\n        }\n        credList.push(cred);\n    }\n    return credList;\n}\n\nfunction toBase64Str(bin){\n    return btoa(String.fromCharCode.apply(null, new Uint8Array(bin)));\n}\n \nwebAuthnRegistration('{{{skjson publicKeyCredentialCreationOptions}}}');"
+              },
+              "sktemplate": {
+                "customerId": "35f33bbaf301dfa496ccb7eee32d9c0e",
+                "visibility": "private",
+                "version": "1.0",
+                "name": "FIDO Enrollment",
+                "description": "",
+                "createdDate": 1650931787708,
+                "inputSchema": "{\n\"type\": \"object\",\n   \"properties\": {\n      \"publicKeyCredentialCreationOptions\": {\n        \"displayName\": \"credentials\",\n\t\t\t\"preferedControlType\": \"textField\",\n            \"enableParameters\": true\n      }\n   }\n}",
+                "outputSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"buttonValue\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"buttonValue\"\n\t\t},\n\t\t\"assertionValue\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"assertionValue\"\n\t\t}\n\t}\n}",
+                "script": "var authAbortController = window.PublicKeyCredential ? new AbortController() : null;\nvar authAbortSignal = window.PublicKeyCredential ? authAbortController.signal : null;\n\nfunction webAuthnRegistration(publicKeyCredentialCreationOptions) {\n  return new Promise(function(resolve, reject) {\n        resolve(register(publicKeyCredentialCreationOptions));\n    });\n}\n\nfunction register(publicKeyCredentialCreationOptions) {\n    return new Promise(function(resolve, reject) {\n        var options = JSON.parse(publicKeyCredentialCreationOptions);\n        var publicKeyCredential = {};\n        publicKeyCredential.rp = options.rp;\n        publicKeyCredential.user = options.user;\n        publicKeyCredential.user.id = new Uint8Array(options.user.id);\n        publicKeyCredential.challenge = new Uint8Array(options.challenge);\n        publicKeyCredential.pubKeyCredParams = options.pubKeyCredParams;\n        // Optional parameters\n        if ('timeout' in options) {\n            publicKeyCredential.timeout = options.timeout;\n        }\n        if ('excludeCredentials' in options) {\n            publicKeyCredential.excludeCredentials = credentialListConversion(options.excludeCredentials);\n        }\n        if ('authenticatorSelection' in options) {\n            publicKeyCredential.authenticatorSelection = options.authenticatorSelection;\n        }\n        if ('attestation' in options) {\n            publicKeyCredential.attestation = options.attestation;\n        }\n        if ('extensions' in options) {\n            publicKeyCredential.extensions = options.extensions;\n        }\n        console.log(publicKeyCredential);\n        navigator.credentials.create({\"publicKey\": publicKeyCredential, \"signal\": authAbortSignal})\n            .then(function (newCredentialInfo) {\n                // Send new credential info to server for verification and registration.\n                console.log(newCredentialInfo);\n                var publicKeyCredential = {};\n                if ('id' in newCredentialInfo) {\n                    publicKeyCredential.id = newCredentialInfo.id;\n                }\n                if ('type' in newCredentialInfo) {\n                    publicKeyCredential.type = newCredentialInfo.type;\n                }\n                if ('rawId' in newCredentialInfo) {\n                    publicKeyCredential.rawId = toBase64Str(newCredentialInfo.rawId);\n                }\n                if (!newCredentialInfo.response) {\n                    throw \"Missing 'response' attribute in credential response\";\n                }\n                var response = {};\n                response.clientDataJSON = toBase64Str(newCredentialInfo.response.clientDataJSON);\n                response.attestationObject = toBase64Str(newCredentialInfo.response.attestationObject);\n                publicKeyCredential.response = response;\n                resolve(JSON.stringify(publicKeyCredential));\n                document.getElementById(\"attestationValue\").value = JSON.stringify(publicKeyCredential);\n                document.getElementById(\"attestationButton\").click();\n            }).catch(function (err) {\n                 if (err.name===\"InvalidStateError\") { \n                    document.getElementById(\"errorButton\").click();\n                } else {\n                // No acceptable authenticator or user refused consent. Handle appropriately.\n                console.log(err);\n                reject(Error(err.name));\n                }\n        });\n    });\n}\n\nfunction credentialListConversion(list) {\n    var credList = [];\n    for (var i=0; i < list.length; i++) {\n        var cred = {\n            type: list[i].type,\n            id: new Uint8Array(list[i].id)\n        };\n        if (list[i].transports) {\n            cred.transports = list[i].transports;\n        }\n        credList.push(cred);\n    }\n    return credList;\n}\n\nfunction toBase64Str(bin){\n    return btoa(String.fromCharCode.apply(null, new Uint8Array(bin)));\n}\n\nconst fidoButton = document.getElementById(\"fidoButton\");\nfidoButton.addEventListener(\"click\", startFido);\nfunction startFido() {  \n    webAuthnRegistration('{{{skjson publicKeyCredentialCreationOptions}}}');\n}",
+                "style": "",
+                "template": "",
+                "updatedDate": 1650932278125,
+                "validationRules": [],
+                "uiId": "1ad797cdffd87189ec30762a5705fc80",
+                "companyId": "a451e225-e437-4087-81bc-2090f1c5a4b8",
+                "value": "1ad797cdffd87189ec30762a5705fc80"
+              },
+              "outputSchema": {
+                "value": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"buttonValue\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"buttonValue\"\n\t\t},\n\t\t\"assertionValue\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"assertionValue\"\n\t\t}\n\t}\n}"
+              },
+              "customCSS": {
+                "value": ""
+              },
+              "validationRules": {
+                "value": []
+              },
+              "type": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"PLATFORM\"\n      }\n    ]\n  }\n]"
+              },
+              "publicKeyCredentialCreationOptions": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"publicKeyCredentialCreationOptions\",\n        \"data\": \"{{local.m7yd491yau.payload.output.rawResponse.publicKeyCredentialCreationOptions}}\",\n        \"tooltip\": \"{{local.m7yd491yau.payload.output.rawResponse.publicKeyCredentialCreationOptions}}\",\n        \"children\": [\n          {\n            \"text\": \"publicKeyCredentialCreationOptions\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 528,
+            "y": 606.823691676577
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "3dcqc96loy",
+            "nodeType": "EVAL",
+            "properties": {
+              "zhzivadczx": {
+                "value": "allTriggersFalse"
+              }
+            }
+          },
+          "position": {
+            "x": 648,
+            "y": 606.823691676577
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "bf1jsb5gwc",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "createSuccessResponse",
+            "type": "action",
+            "properties": {
+              "nodeTitle": {
+                "value": "Enroll Cancelled"
+              },
+              "backgroundColor": {
+                "value": "#7ed321ff"
+              },
+              "claimsNameValuePairs": {
+                "value": []
+              },
+              "returnRequestParameters": {
+                "value": false
+              }
+            },
+            "idUnique": "skadj7nthl"
+          },
+          "position": {
+            "x": 1447.5030264922439,
+            "y": 347.3410466587384
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "cccmrhh5d1",
+            "source": "cdfh8z0ccc",
+            "target": "zhzivadczx"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "noiygicv11",
+            "source": "qdidldvruy",
+            "target": "olyh2c4xjv"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zb5dxyfuql",
+            "source": "qdidldvruy",
+            "target": "85tdzne8xj"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "26j8np8hqw",
+            "source": "qdidldvruy",
+            "target": "wleeb8lx5m"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "vd599dfhzy",
+            "source": "y38ela9x83",
+            "target": "cdfh8z0ccc"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "2lzb0dzzcz",
+            "source": "yxpid7yt0j",
+            "target": "qdidldvruy"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "4g55xhja1e",
+            "source": "216ifhity8",
+            "target": "bf1jsb5gwc"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "f05t84fp23",
+            "source": "qdidldvruy",
+            "target": "tpcyp0qsbk"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "gc9mtgcvtw",
+            "source": "tu8vi5uh8t",
+            "target": "7pasd1m9dp"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "3hf6dmifxf",
+            "source": "m7yd491yau",
+            "target": "tu8vi5uh8t"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "f0cokwmsma",
+            "source": "7pasd1m9dp",
+            "target": "3dcqc96loy"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "a41ol293pc",
+            "source": "cdfh8z0ccc",
+            "target": "yxpid7yt0j"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zg29t97hsa",
+            "source": "zhzivadczx",
+            "target": "216ifhity8"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "pwbl5dck6w",
+            "source": "216ifhity8",
+            "target": "0ljrzqo06a"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "l66sghflbe",
+            "source": "3dcqc96loy",
+            "target": "y38ela9x83"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "wibhtozxpr",
+            "source": "3dcqc96loy",
+            "target": "zhzivadczx"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        }
+      ]
+    },
+    "data": {},
+    "zoomingEnabled": true,
+    "userZoomingEnabled": true,
+    "zoom": 1,
+    "minZoom": 1e-50,
+    "maxZoom": 1e+50,
+    "panningEnabled": true,
+    "userPanningEnabled": true,
+    "pan": {
+      "x": 0,
+      "y": 0
+    },
+    "boxSelectionEnabled": true,
+    "renderer": {
+      "name": "null"
+    }
+  },
+  "inputSchema": [
+    {
+      "propertyName": "p1UserId",
+      "description": "PingOne UserID",
+      "preferredDataType": "string",
+      "preferredControlType": "textField",
+      "isExpanded": true
+    },
+    {
+      "propertyName": "fidoRelyingParty",
+      "description": "FIDO Relying Party",
+      "preferredDataType": "string",
+      "preferredControlType": "textField",
+      "isExpanded": true
+    }
+  ],
+  "flowColor": "#e4e2e1",
+  "savedDate": 1704746719322,
+  "variables": [],
+  "connections": []
+}

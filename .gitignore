@@ -1,4 +1,4 @@
-.DS_Store
+*.DS_Store
 **/.DS_Store
 
 /import
@@ -39,3 +39,5 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+terraform.tfstate

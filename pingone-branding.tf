@@ -1,13 +1,13 @@
 resource "pingone_image" "company_logo" {
   environment_id = pingone_environment.my_environment.id
 
-  image_file_base64 = filebase64("~/downloads/HoneywellHome_Logo.png")
+  image_file_base64 = filebase64(var.logo_filename)
 }
 
 resource "pingone_branding_settings" "branding" {
   environment_id = pingone_environment.my_environment.id
 
-  company_name = "Demo - Generic"
+  company_name = var.company_name
 
   logo_image {
     id   = pingone_image.company_logo.id
