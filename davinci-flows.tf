@@ -35,8 +35,16 @@ resource "davinci_flow" "initial_flow" {
   ]
 }
 
+data "template_file" "flow_login" {
+    template = file("./davinci/[Sub]_Login with External Lookup.tpl")
+
+    vars = {
+        form_login = pingone_form.login.id
+    }
+}
+
 resource "davinci_flow" "sub_login_flow" {
-  flow_json = file("./davinci/[Sub]_Login with External Lookup.json")
+  flow_json = data.template_file.flow_login.rendered
   deploy    = true
   // NOTICE: this is NOT resource.pingone_environment. Dependency is on the role assignment, not environment.
   environment_id = pingone_environment.my_environment.id
@@ -112,8 +120,16 @@ resource "davinci_flow" "sub_login_flow" {
   ]
 }
 
+data "template_file" "flow_stepup" {
+    template = file("./davinci/[Sub]_Step-Up.tpl")
+
+    vars = {
+        form_id = pingone_form.otp_entry.id
+    }
+}
+
 resource "davinci_flow" "sub_stepup_flow" {
-  flow_json = file("./davinci/[Sub]_Step-Up.json")
+  flow_json = data.template_file.flow_stepup.rendered
   deploy    = true
   // NOTICE: this is NOT resource.pingone_environment. Dependency is on the role assignment, not environment.
   environment_id = pingone_environment.my_environment.id
@@ -154,8 +170,17 @@ resource "davinci_flow" "sub_stepup_flow" {
   ]
 }
 
+data "template_file" "flow_registration" {
+    template = file("./davinci/[Sub]_Registration.tpl")
+
+    vars = {
+        form_register_passkey = pingone_form.register_passkey.id
+        form_register_password = pingone_form.password.id
+    }
+}
+
 resource "davinci_flow" "sub_registration_flow" {
-  flow_json = file("./davinci/[Sub]_Registration.json")
+  flow_json = data.template_file.flow_registration.rendered
   deploy    = true
   // NOTICE: this is NOT resource.pingone_environment. Dependency is on the role assignment, not environment.
   environment_id = pingone_environment.my_environment.id

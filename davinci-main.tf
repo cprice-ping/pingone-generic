@@ -25,3 +25,36 @@ resource "pingone_role_assignment_user" "davinci_admin_sso" {
   role_id              = data.pingone_role.davinci_admin.id
   scope_environment_id = pingone_environment.my_environment.id
 }
+
+resource "davinci_application" "pingone_app" {
+  name           = "PingOne Connection"
+  environment_id = pingone_environment.my_environment.id
+  oauth {
+    enabled = true
+    values {
+      allowed_grants                = ["authorizationCode"]
+      allowed_scopes                = ["openid", "profile"]
+      enabled                       = true
+      enforce_signed_request_openid = false
+      redirect_uris                 = ["https://auth.pingone.com/0000-0000-0000/rp/callback/openid_connect"]
+    }
+  }
+  saml {
+    values {
+      enabled                = false
+      enforce_signed_request = false
+    }
+  }
+}
+
+resource "davinci_application_flow_policy" "session_flow_policy" {
+  environment_id = pingone_environment.my_environment.id
+  application_id = davinci_application.pingone_app.id
+  name           = "PingOne - Session Login"
+  status         = "enabled"
+  policy_flow {
+    flow_id    = resource.davinci_flow.initial_flow.id
+    version_id = -1
+    weight     = 100
+  }
+}

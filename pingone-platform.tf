@@ -133,11 +133,11 @@ resource "pingone_application_resource_grant" "app_logon_resource_grants" {
   ]
 }
 
-# resource "pingone_application_flow_policy_assignment" "app_logon" {
-#   environment_id = pingone_environment.my_environment.id
-#   application_id = pingone_application.app_logon.id
+resource "pingone_application_flow_policy_assignment" "app_logon" {
+  environment_id = pingone_environment.my_environment.id
+  application_id = pingone_application.app_logon.id
 
-#   flow_policy_id = davinci_application.initial_policy.policy.*.policy_id[0]
+  flow_policy_id = davinci_application.pingone_app.policy.*.policy_id[0]
 
-#   priority = 1
-# }
+  priority = 1
+}
