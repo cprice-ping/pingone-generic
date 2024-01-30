@@ -170,7 +170,7 @@
             "nodeType": "CONNECTION",
             "connectionId": "b72bd44e6be8180bd5988ac74cd9c949",
             "connectorId": "pingOneMfaConnector",
-            "name": "PingOne MFA",
+            "name": "Sent Email OTP",
             "label": "PingOne MFA",
             "status": "configured",
             "capabilityName": "createDeviceAuthentication",
@@ -180,7 +180,7 @@
                 "value": "{}"
               },
               "customTemplateVariant": {
-                "value": "{}"
+                "value": ""
               },
               "customApplicationId": {
                 "value": "{}"
@@ -191,6 +191,9 @@
               "selectedDevice": {},
               "authTemplateName": {
                 "value": "STRONG_AUTHENTICATION"
+              },
+              "templateVariant": {
+                "value": ""
               }
             }
           },

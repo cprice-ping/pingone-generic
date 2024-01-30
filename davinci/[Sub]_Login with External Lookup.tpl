@@ -1460,7 +1460,7 @@
             "properties": {
               "subFlowId": {
                 "value": {
-                  "label": "MFA",
+                  "label": "[Sub] Step-Up",
                   "value": "a7a1269728459f5fe3ec9dd1e68b4ce7"
                 }
               },

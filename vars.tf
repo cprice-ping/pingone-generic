@@ -83,10 +83,10 @@ locals {
   ap            = var.region == "AsiaPacific" ? "AP" : ""
   pingone_short = coalesce(local.na, local.eu, local.ca, local.ap)
 
-#   # Inject P1 Form ID into Flow
-#   flow_stepup = jsondecode(file("./davinci/[Sub]_Step-Up.json"))
-#   flow_stepup_modified = jsonencode({
-#     ...local.flow_stepup,
-#     local.flow_stepup.graphData.elements.nodes.6.data.properties.form.value = pingone_form.otp_entry.id
-# })
+  #   # Inject P1 Form ID into Flow
+  #   flow_stepup = jsondecode(file("./davinci/[Sub]_Step-Up.json"))
+  #   flow_stepup_modified = jsonencode({
+  #     ...local.flow_stepup,
+  #     local.flow_stepup.graphData.elements.nodes.6.data.properties.form.value = pingone_form.otp_entry.id
+  # })
 }

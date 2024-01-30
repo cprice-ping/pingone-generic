@@ -34,7 +34,7 @@ resource "davinci_connection" "flow_connector" {
 }
 
 resource "davinci_connection" "annotation" {
-  name           = "myAnnotationConnector"
+  name           = "Annotation"
   connector_id   = "annotationConnector"
   environment_id = pingone_environment.my_environment.id
 }
@@ -136,7 +136,7 @@ resource "davinci_connection" "pingone_authentication" {
 }
 
 resource "davinci_connection" "teleport_connector" {
-  name           = "Teleport"
+  name           = "Node"
   connector_id   = "nodeConnector"
   environment_id = pingone_environment.my_environment.id
 }
